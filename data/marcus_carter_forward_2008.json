@@ -1,0 +1,394 @@
+[
+  {
+    "date": "12/10/24",
+    "opponent": "@ Burlington Eagles U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 24.333333333333332
+  },
+  {
+    "date": "23/02/25",
+    "opponent": "vs Grey-Bruce Highlanders U18 AAA",
+    "goals": 1,
+    "assists": 1,
+    "points": 2,
+    "toi": 24.3
+  },
+  {
+    "date": "30/10/24",
+    "opponent": "vs Burlington Eagles U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 25.75
+  },
+  {
+    "date": "12/07/24",
+    "opponent": "@ Grey-Bruce Highlanders U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 20.683333333333334
+  },
+  {
+    "date": "03/02/25",
+    "opponent": "vs Hamilton Kilty B's U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 24.116666666666667
+  },
+  {
+    "date": "25/02/25",
+    "opponent": "vs Hamilton Kilty B's U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 23.416666666666668
+  },
+  {
+    "date": "13/10/24",
+    "opponent": "@ Burlington Eagles U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 25.05
+  },
+  {
+    "date": "17/11/24",
+    "opponent": "@ Greater Kingston Jr. Gaels U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 25.3
+  },
+  {
+    "date": "23/11/24",
+    "opponent": "vs Hamilton Kilty B's U18 AAA",
+    "goals": 2,
+    "assists": 0,
+    "points": 2,
+    "toi": 19.716666666666665
+  },
+  {
+    "date": "22/12/24",
+    "opponent": "@ Guelph Jr. Gryphons U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 22.85
+  },
+  {
+    "date": "23/01/25",
+    "opponent": "vs Oakville Rangers U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 21.583333333333332
+  },
+  {
+    "date": "15/02/25",
+    "opponent": "@ Hamilton Kilty B's U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 20.916666666666668
+  },
+  {
+    "date": "10/01/24",
+    "opponent": "vs Oakville Rangers U18 AAA",
+    "goals": 2,
+    "assists": 0,
+    "points": 2,
+    "toi": 22.05
+  },
+  {
+    "date": "26/10/24",
+    "opponent": "vs Guelph Jr. Gryphons U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 26.216666666666665
+  },
+  {
+    "date": "21/12/24",
+    "opponent": "vs Grey-Bruce Highlanders U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 18.0
+  },
+  {
+    "date": "14/01/25",
+    "opponent": "@ Burlington Eagles U18 AAA",
+    "goals": 2,
+    "assists": 1,
+    "points": 3,
+    "toi": 17.766666666666666
+  },
+  {
+    "date": "09/02/25",
+    "opponent": "@ Hamilton Kilty B's U18 AAA",
+    "goals": 2,
+    "assists": 0,
+    "points": 2,
+    "toi": 18.033333333333335
+  },
+  {
+    "date": "18/02/25",
+    "opponent": "@ Niagara North Stars U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 20.55
+  },
+  {
+    "date": "13/10/24",
+    "opponent": "@ Grey-Bruce Highlanders U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 28.066666666666666
+  },
+  {
+    "date": "15/11/24",
+    "opponent": "vs North Central Predators U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 23.7
+  },
+  {
+    "date": "22/11/24",
+    "opponent": "vs Southern Tier Admirals U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 19.3
+  },
+  {
+    "date": "26/11/24",
+    "opponent": "vs Niagara North Stars U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 21.833333333333332
+  },
+  {
+    "date": "12/01/24",
+    "opponent": "vs Credit River Capitals U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 23.566666666666666
+  },
+  {
+    "date": "12/03/24",
+    "opponent": "vs Credit River Capitals U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 21.983333333333334
+  },
+  {
+    "date": "12/06/24",
+    "opponent": "vs Toronto Titans U18 AAA",
+    "goals": 1,
+    "assists": 2,
+    "points": 3,
+    "toi": 17.083333333333332
+  },
+  {
+    "date": "07/01/25",
+    "opponent": "@ Oakville Rangers U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 21.483333333333334
+  },
+  {
+    "date": "08/02/25",
+    "opponent": "vs Southern Tier Admirals U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 22.2
+  },
+  {
+    "date": "06/03/25",
+    "opponent": "vs Niagara North Stars U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 21.833333333333332
+  },
+  {
+    "date": "19/11/24",
+    "opponent": "vs Credit River Capitals U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 18.05
+  },
+  {
+    "date": "17/12/24",
+    "opponent": "vs Niagara North Stars U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 22.95
+  },
+  {
+    "date": "04/01/25",
+    "opponent": "vs Burlington Eagles U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 21.283333333333335
+  },
+  {
+    "date": "12/01/25",
+    "opponent": "@ Niagara North Stars U18 AAA",
+    "goals": 2,
+    "assists": 1,
+    "points": 3,
+    "toi": 16.333333333333332
+  },
+  {
+    "date": "26/01/25",
+    "opponent": "vs Credit River Capitals U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 20.083333333333332
+  },
+  {
+    "date": "02/02/25",
+    "opponent": "@ Southern Tier Admirals U18 AAA",
+    "goals": 3,
+    "assists": 0,
+    "points": 3,
+    "toi": 19.916666666666668
+  },
+  {
+    "date": "22/10/24",
+    "opponent": "vs Hamilton Kilty B's U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 19.616666666666667
+  },
+  {
+    "date": "12/05/24",
+    "opponent": "vs Vaughan Kings U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 19.783333333333335
+  },
+  {
+    "date": "12/07/24",
+    "opponent": "@ Don Mills Flyers U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 20.516666666666666
+  },
+  {
+    "date": "15/12/24",
+    "opponent": "@ Grey-Bruce Highlanders U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 25.316666666666666
+  },
+  {
+    "date": "10/01/25",
+    "opponent": "@ Credit River Capitals U18 AAA",
+    "goals": 1,
+    "assists": 2,
+    "points": 3,
+    "toi": 20.15
+  },
+  {
+    "date": "10/11/24",
+    "opponent": "vs Oakville Rangers U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 21.85
+  },
+  {
+    "date": "20/10/24",
+    "opponent": "@ Grey-Bruce Highlanders U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 18.7
+  },
+  {
+    "date": "02/03/25",
+    "opponent": "@ Oakville Rangers U18 AAA",
+    "goals": 0,
+    "assists": 2,
+    "points": 2,
+    "toi": 19.066666666666666
+  },
+  {
+    "date": "18/10/24",
+    "opponent": "@ Niagara North Stars U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 16.733333333333334
+  },
+  {
+    "date": "11/08/24",
+    "opponent": "@ Brantford 99ers U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 18.916666666666668
+  },
+  {
+    "date": "11/10/24",
+    "opponent": "@ Reps Hockey Club U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 13.7
+  },
+  {
+    "date": "18/01/25",
+    "opponent": "vs Greater Kingston Jr. Gaels U18 AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 19.216666666666665
+  },
+  {
+    "date": "11/09/24",
+    "opponent": "@ Sarnia-Lambton Jr. Sting U18 AAA",
+    "goals": 0,
+    "assists": 0,
+    "points": 0,
+    "toi": 12.266666666666667
+  },
+  {
+    "date": "11/08/24",
+    "opponent": "vs Pittsburgh Predators 16U AAA",
+    "goals": 1,
+    "assists": 0,
+    "points": 1,
+    "toi": 10.3
+  },
+  {
+    "date": "29/09/24",
+    "opponent": "@ Guelph Jr. Gryphons U18 AAA",
+    "goals": 0,
+    "assists": 1,
+    "points": 1,
+    "toi": 5.933333333333334
+  }
+]
