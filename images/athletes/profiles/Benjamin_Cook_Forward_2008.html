@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benjamin Cook - Player Profile</title>
+  <link rel="stylesheet" href="../../../css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+    }
+
+    .profile-layout {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container05 {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container05 video,
+    .container05 img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .container05 img {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li> | <a href="../../../index.html" class="active">Overview</a> | </li>
+        <li><a href="../../../athletes.html">Our Athletes</a> | </li>
+        <li><a href="../../../services.html">Our Services</a> | </li>
+        <li><a href="../../../about.html">About Us</a> | </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="profile-layout">
+    <div class="left-stack">
+      <div class="container01">
+        <img src="../Benjamin_Cook_Forward_2008.jpg" alt="Benjamin Cook" />
+      </div>
+      <div class="container02">Position: Forward</div>
+      <div class="container03">Birth Year: 2008</div>
+    </div>
+
+    <div class="container04">Benjamin Cook</div>
+
+    <div class="container05">
+      <video id="introVideo" autoplay muted playsinline>
+        <source src="../temp/Benjamin_Cook_intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <img id="finalImage" src="../temp/Benjamin_Cook_Stats.jpg" alt="Benjamin_Cook" />
+    </div>
+  </div>
+
+  <div id="site-footer">
+    <footer>
+      <div class="footer-title">
+        <p>&copy; 2003 Emergent Technologies Media Solutions Inc.</p>
+      </div>
+      <div class="footer-subtext">
+        <p>All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const video = document.getElementById('introVideo');
+    const image = document.getElementById('finalImage');
+
+    video.addEventListener('ended', () => {
+      video.style.display = 'none';
+      image.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

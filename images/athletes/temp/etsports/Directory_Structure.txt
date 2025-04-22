@@ -1,0 +1,28 @@
+/project-root/
+│
+├── index.html
+├── athletes.html
+├── footer.html
+│
+├── css/
+│   └── styles.css
+│
+├── js/
+│   ├── footer.js
+│   ├── hero-rotator.js
+│   ├── slideshow.js
+│   └── media-gallery.js
+│
+├── images/
+│   ├── G1.jpg
+│   ├── G2.jpg
+│   ├── emtech/
+│   │   └── Emergent Technology_Logo3.jpg
+│   ├── banner/
+│   │   ├── bg_banner_girl_globe_etsports.png
+│   │   └── [other rotating banner images]
+│   └── athletes/
+│       ├── Marcus_Carter_Forward_2008.jpg
+│       └── [other athlete images]
+│
+├── server.js

@@ -1,0 +1,67 @@
+/* === Layout Wrapper for Athlete Profile Page === */
+.profile-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* === Left Vertical Stack of Three Containers === */
+.left-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 15%;
+}
+
+/* === Individual Left Containers (01–03) === */
+.container01,
+.container02,
+.container03 {
+  background-color: #e1e1e1;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  height: 32%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* === Narrow Vertical Container (04) === */
+.container04 {
+  width: 10%;
+  height: 100%;
+  background-color: #d9edf7;
+  border: 1px solid #a3c3d9;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* === Wide Main Content Container (05) === */
+.container05 {
+  flex: 1;
+  height: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* === Responsive Behavior for Mobile and*
