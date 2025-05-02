@@ -13,6 +13,7 @@
   <header>
     <div class="top-nav">
       <a href="login.html">Login</a> |
+	  <a href="player-registration.html">Register</a> | </li> <!-- ✅ Insert this line -->
       <a href="contact-us.html">Contact Us</a>
     </div>
     <nav aria-label="Main navigation">
@@ -25,28 +26,28 @@
     </nav>
   </header>
 
+  <!-- Intro Section -->
   <section class="athletes-intro">
     <h1 class="athlete-title">Our Athletes</h1>
     <p class="athlete-subtext">Meet the talented athletes we work with and support.</p>
   </section>
 
-<!-- Filter Controls: Sort by Position, Birth Year, Sport, and Search -->
-<section id="filter-controls" class="filter-controls"></section>
+  <!-- Filter Controls (generated dynamically by media-gallery.js) -->
+  <section id="filter-controls" class="filter-controls"></section>
 
-<!-- Media Gallery Container -->
-<section class="media-gallery" id="media-gallery">
-  <!-- Player images will be loaded dynamically -->
-</section>
+  <!-- Media Gallery -->
+  <section id="media-gallery" class="media-gallery">
+    <!-- Athlete cards dynamically injected here -->
+  </section>
 
   <!-- Footer -->
-  <!-- Automatically injected footer -->
   <footer>
-	<div id="site-footer"></div>
-	<script src="js/footer.js"></script>
+    <div id="site-footer"></div>
+    <script src="js/footer.js"></script>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/media-gallery.js"></script>
+
 </body>
 </html>
-
-

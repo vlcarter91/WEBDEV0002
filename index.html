@@ -15,6 +15,7 @@
   <header>
     <div class="top-nav">
       <a href="login.html">Login</a> |
+	  <a href="player-registration.html">Register</a> | </li> <!-- ✅ Insert this line -->
       <a href="contact-us.html">Contact Us</a>
     </div>
     <nav aria-label="Main navigation">
@@ -28,22 +29,16 @@
   </header>
 
   <!-- Main content -->
-  <main>
+  <main class="main-wrapper">
 
     <!-- Hero banner -->
-<!--    <section class="hero">
-      <img src="images/banner/bg_banner_girl_globe_etsports.png" alt="Emergent Media Hero Banner with Global Reach" />
+    <section class="hero">
+      <img id="hero-banner" src="images/banner/bg_banner_girl_globe_etsports.png" alt="Emergent Media Hero Banner" />
     </section>
--->
-
-    <!-- Hero banner -->
-	<section class="hero">
-		<img id="hero-banner" src="images/banner/bg_banner_girl_globe_etsports.png" alt="Emergent Media Hero Banner" />
-	</section>
 
 
     <!-- Media gallery -->
-    <section class="media-gallery">
+    <section class="media-gallery responsive-gallery">
       <div class="media-placeholder">
         <a href="athletes.html">
           <img src="images/G1.jpg" alt="Athlete analytics introduction" />
@@ -51,7 +46,7 @@
       </div>
       <div class="media-placeholder">
         <a href="page2.html">
-          <img src="images/Emergent Technology_Logo3.jpg" alt="Emergent Technology company logo" />
+          <img src="images/Logo3.jpg" alt="Emergent Technology company logo" />
         </a>
       </div>
       <div class="media-placeholder">
@@ -61,25 +56,26 @@
       </div>
       <div class="media-placeholder">
         <a href="athletes.html">
-          <img id="slideshow" src="images/athletes/Marcus_Carter_Forward_2008.jpg" alt="Featured athlete: Marcus Carter" />
+          <img id="slideshow" src="images/athletes/Marcus_Carter_Forward_2008.jpg" alt="Featured Athlete Marcus Carter" />
         </a>
       </div>
     </section>
-
+	
+	
   </main>
 
+	
+
   <!-- Footer -->
-  <!-- Automatically injected footer -->
   <footer>
-	<div id="site-footer"></div>
-	<script src="js/footer.js"></script>
+    <div id="site-footer"></div>
+    <script src="js/footer.js"></script>
   </footer>
 
-	<!-- Add this script at the end of the <body> before </body> -->
-	<script src="js/hero-rotator.js"></script>
+  <!-- JavaScript (order matters!) -->
+  <script src="js/banner-images.js"></script> <!-- Hero banner list -->
+  <script src="js/hero-rotator.js"></script>   <!-- Hero banner rotation logic -->
+  <script src="js/slideshow.js"></script>      <!-- Athlete slideshow logic -->
 
-
-  <!-- JS -->
-  <script src="js/slideshow.js"></script>
 </body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Player Registration</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #111;
+      border: 2px solid orange;
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: orange;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #444;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #222;
+      color: white;
+    }
+
+    input[type="submit"] {
+      background-color: orange;
+      color: black;
+      border: none;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ff9500;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 2rem;
+      color: orange;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem;
+      background-color: #222;
+    }
+
+    nav li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid orange;
+    }
+
+    nav a:hover {
+      color: #ff9500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="top-nav">
+      <a href="login.html">Login</a> |
+	  <a href="player-registration.html">Register</a> | </li> <!-- ✅ Insert this line -->
+      <a href="contact-us.html">Contact Us</a>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="athletes.html">Our Athletes</a></li>
+        <li><a href="services.html">Our Services</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="registration-title">Player Registration</h1>
+
+    <form action="/register" method="POST" enctype="multipart/form-data" class="registration-form">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="firstName" required />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" id="lastName" required />
+
+      <label for="position">Position</label>
+      <input type="text" name="position" id="position" required />
+
+      <label for="birthYear">Birth Year</label>
+      <input type="number" name="birthYear" id="birthYear" min="2000" max="2030" required />
+
+      <label for="sports">Sport(s)</label>
+      <select name="sports" id="sports" multiple required>
+        <option value="Hockey">Hockey</option>
+        <option value="Baseball">Baseball</option>
+        <option value="Football">Football</option>
+        <option value="Soccer">Soccer</option>
+        <option value="Basketball">Basketball</option>
+      </select>
+
+      <label for="email">Player Email Address</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="parent1Name">Parent #1 Name</label>
+      <input type="text" name="parent1Name" id="parent1Name" required />
+
+      <label for="parent1Email">Parent #1 Email Address</label>
+      <input type="email" name="parent1Email" id="parent1Email" required />
+
+      <label for="parent2Name">Parent #2 Name</label>
+      <input type="text" name="parent2Name" id="parent2Name" />
+
+      <label for="parent2Email">Parent #2 Email Address</label>
+      <input type="email" name="parent2Email" id="parent2Email" />
+
+      <label for="profileFile">Upload Headshot</label>
+      <input type="file" name="profileFile" id="profileFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
+
+      <input type="submit" value="Submit Registration" />
+    </form>
+  </main>
+</body>
+</html>

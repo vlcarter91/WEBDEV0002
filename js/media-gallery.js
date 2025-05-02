@@ -1,181 +1,144 @@
-// ============================================================================
-// 📁 Configuration
-// Folder where athlete images are stored, relative to site root
-// ============================================================================
-const imageFolder = "images/athletes/";
+// js/media-gallery.js
+// ✅ Final version — dynamically builds gallery from /api/athletes.json
 
-// ============================================================================
-// 🎯 Utility Function
-// Capitalize the first letter of a string
-// ============================================================================
-function capitalizeFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+console.log("✅ media-gallery.js loaded (final version)");
+
+const galleryElement = document.getElementById("media-gallery");
+const controlsContainer = document.getElementById("filter-controls");
+
+let athleteData = [];
+let currentSport = "Hockey"; // Default sport filter
+
+function fetchAthleteData() {
+  fetch("/api/athletes.json")
+    .then((res) => {
+      if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
+      return res.json();
+    })
+    .then((athletes) => {
+      athleteData = athletes;
+      console.log(`✅ Loaded ${athleteData.length} athletes.`);
+      createControls(athleteData);
+    })
+    .catch((err) => {
+      console.error("❌ Failed to fetch athlete data:", err);
+    });
 }
 
-// ============================================================================
-// 🚀 Initialize Gallery
-// ============================================================================
-document.addEventListener("DOMContentLoaded", () => {
-  const gallery = document.getElementById("media-gallery");
-  const controlsContainer = document.getElementById("filter-controls");
+function createControls(data) {
+  controlsContainer.innerHTML = `
+    <div class="gallery-controls">
 
-  fetch("/api/athletes")
-    .then((response) => response.json())
-    .then((imageList) => {
-      const parsedImages = imageList.map((filename) => {
-        const parts = filename.replace(/\.[^/.]+$/, "").split("_");
-        return {
-          filename,
-          first: capitalizeFirstLetter(parts[0]),
-          last: capitalizeFirstLetter(parts[1]),
-          position: capitalizeFirstLetter(parts[2]),
-          birthYear: parts[3],
-          sport: "Hockey",
-          label: capitalizeFirstLetter(parts[0]) + " " + capitalizeFirstLetter(parts[1]),
-        };
-      });
-
-      createControls(parsedImages);
-    })
-    .catch((error) => {
-      console.error("❌ Failed to load athlete images:", error);
-    });
-
-  // ============================================================================
-  // 🛠️ Create Controls (Filters + Sort + Search)
-  // ============================================================================
-  function createControls(parsedImages) {
-    controlsContainer.innerHTML = `
-      <div class="gallery-controls">
-
-        <div class="control-group">
-          <label for="sort-name">Sort by:</label>
-          <select id="sort-name">
-            <option value="last">Last Name</option>
-            <option value="first">First Name</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label for="sort-position">Position</label>
-          <select id="sort-position">
-            <option value="all">All</option>
-            <option value="Forward">Forward</option>
-            <option value="Defense">Defense</option>
-            <option value="Goalie">Goalie</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label for="sort-birthYear">Birth Year</label>
-          <select id="sort-birthYear">
-            <option value="all">All</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label for="filter-sport">Sport</label>
-          <select id="filter-sport">
-            <option value="all">All</option>
-            <option value="Hockey">Hockey</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label for="playerSearch">Search</label>
-          <input type="text" id="playerSearch" placeholder="First Last" />
-        </div>
-
+      <div class="control-group">
+        <label for="sort-name">Sort by:</label>
+        <select id="sort-name">
+          <option value="last">Last Name</option>
+          <option value="first">First Name</option>
+        </select>
       </div>
-    `;
 
-    // 🎛️ Event Listeners for Dropdowns
-    document.getElementById("sort-name").addEventListener("change", () => {
-      sortAndRender(parsedImages);
+      <div class="control-group">
+        <label for="sort-position">Position</label>
+        <select id="sort-position">
+          <option value="all">All</option>
+          <option value="Forward">Forward</option>
+          <option value="Defense">Defense</option>
+          <option value="Goalie">Goalie</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="sort-birthYear">Birth Year</label>
+        <select id="sort-birthYear">
+          <option value="all">All</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="filter-sport">Sport</label>
+        <select id="filter-sport">
+          <option value="all">All</option>
+          <option value="Hockey">Hockey</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="playerSearch">Search</label>
+        <input type="text" id="playerSearch" placeholder="First Last" />
+      </div>
+
+    </div>
+  `;
+
+  document.getElementById("sort-name").addEventListener("change", () => sortAndRender(data));
+  document.getElementById("sort-position").addEventListener("change", () => sortAndRender(data));
+  document.getElementById("sort-birthYear").addEventListener("change", () => sortAndRender(data));
+  document.getElementById("filter-sport").addEventListener("change", () => sortAndRender(data));
+
+  document.getElementById("playerSearch").addEventListener("input", function (event) {
+    const query = event.target.value.trim().toLowerCase();
+    const allItems = document.querySelectorAll(".media-placeholder");
+
+    allItems.forEach(item => {
+      const label = item.querySelector(".media-label").textContent.toLowerCase();
+      const matches = label.includes(query);
+      item.style.display = matches ? "" : "none";
     });
-    document.getElementById("sort-position").addEventListener("change", () => {
-      sortAndRender(parsedImages);
-    });
-    document.getElementById("sort-birthYear").addEventListener("change", () => {
-      sortAndRender(parsedImages);
-    });
-    document.getElementById("filter-sport").addEventListener("change", () => {
-      sortAndRender(parsedImages);
-    });
+  });
 
-    // 🔍 Search Listener
-    document.getElementById("playerSearch").addEventListener("input", function (event) {
-      const query = event.target.value.trim().toLowerCase();
-      const allItems = document.querySelectorAll(".media-placeholder");
+  sortAndRender(data);
+}
 
-      allItems.forEach(item => {
-        const label = item.querySelector(".media-label").textContent.toLowerCase();
-        const matches = label.includes(query);
-        item.style.display = matches ? "" : "none";
-      });
-    });
+function sortAndRender(data) {
+  const position = document.getElementById("sort-position").value;
+  const birthYear = document.getElementById("sort-birthYear").value;
+  const sport = document.getElementById("filter-sport").value;
+  const sortBy = document.getElementById("sort-name").value;
 
-    // 🚀 Initial draw
-    sortAndRender(parsedImages);
-  }
+  const filtered = data.filter((a) => {
+    return (
+      (position === "all" || a.position === position) &&
+      (birthYear === "all" || a.birthYear === birthYear) &&
+      (sport === "all" || a.sport === sport)
+    );
+  });
 
-  // ============================================================================
-  // 📊 Filter + Sort + Render
-  // ============================================================================
-  function sortAndRender(images) {
-    const position = document.getElementById("sort-position").value;
-    const birthYear = document.getElementById("sort-birthYear").value;
-    const sport = document.getElementById("filter-sport").value;
-    const sortBy = document.getElementById("sort-name").value;
+  filtered.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
 
-    const filtered = images.filter((img) => {
-      return (
-        (position === "all" || img.position === position) &&
-        (birthYear === "all" || img.birthYear === birthYear) &&
-        (sport === "all" || img.sport === sport)
-      );
-    });
+  renderGallery(filtered);
+}
 
-    // 🔠 Sort by selected field: "first" or "last"
-    filtered.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
+function renderGallery(dataSet) {
+  galleryElement.innerHTML = "";
 
-    renderGallery(filtered);
-  }
+  dataSet.forEach((athlete) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "media-placeholder";
 
-  // ============================================================================
-  // 🖼️ Render Gallery
-  // ============================================================================
-  function renderGallery(dataSet) {
-    gallery.innerHTML = "";
+    const labelDiv = document.createElement("div");
+    labelDiv.className = "media-label";
+    labelDiv.textContent = `${athlete.first} ${athlete.last}`;
 
-    dataSet.forEach((data) => {
-      let img = new Image();
-      img.src = imageFolder + data.filename;
-      img.alt = data.label;
+    const img = new Image();
+    img.src = "images/athletes/" + athlete.filename;
+    img.alt = `${athlete.first} ${athlete.last}`;
+    img.className = "gallery-image";
 
-      img.decode().then(() => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "media-placeholder";
+    const link = document.createElement("a");
+    const profileName = athlete.filename.replace(/\.[^/.]+$/, ".html");
+    link.href = "images/athletes/profiles/" + profileName;
+    link.target = "_blank";
+    link.appendChild(img);
 
-        const labelDiv = document.createElement("div");
-        labelDiv.className = "media-label";
-        labelDiv.textContent = data.label;
+    wrapper.appendChild(labelDiv);
+    wrapper.appendChild(link);
+    galleryElement.appendChild(wrapper);
+  });
+}
 
-        const link = document.createElement("a");
-        const profileName = data.filename.replace(/\.[^/.]+$/, ".html");
-        link.href = "images/athletes/profiles/" + profileName;
-        link.target = "_blank";
-        link.appendChild(img);
-
-        wrapper.appendChild(labelDiv);
-        wrapper.appendChild(link);
-        gallery.appendChild(wrapper);
-      }).catch((err) => {
-        console.error(`❌ Failed to decode image ${data.filename}:`, err);
-      });
-    });
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAthleteData();
 });

@@ -1,0 +1,313 @@
+**Emergent Media Website Setup - Detailed Reference (April 2025)**
+
+---
+
+# Website Overview
+The site is built using static HTML, CSS, and JavaScript files, dynamically enhanced with pre-generated JSON files. All dynamic content (like athlete profiles, hero banners, and gallery filtering) is generated **locally** using Node.js scripts, then uploaded to a **static hosting environment** like WHC.
+
+Node.js is used only during **local development and file generation**, NOT during live site hosting.
+
+
+# Key Pages and Their Purpose
+| File             | Purpose                                                     |
+|------------------|--------------------------------------------------------------|
+| index.html       | Home page with rotating hero banners and media gallery links |
+| athletes.html    | Media Gallery for athletes                                   |
+| services.html    | Overview of services (not uploaded, but assumed)             |
+| about.html       | Company/about page (not uploaded, but assumed)               |
+
+
+# Stylesheets
+| File          | Purpose                                      |
+|---------------|----------------------------------------------|
+| css/styles.css| Full site-wide styling: header, hero, footer, gallery, profiles |
+
+
+# JavaScript Files
+| File              | Purpose                                                |
+|-------------------|--------------------------------------------------------|
+| js/footer.js         | Injects `footer.html` into each page dynamically       |
+| js/hero-rotator.js   | Rotates hero banner images (reads `athlete-images.js`)  |
+| js/media-gallery.js  | Builds athletes gallery with filter, search, sort      |
+| js/slideshow.js      | Optional mini slideshow for featured images            |
+| js/athlete-images.js | Static list of athlete image filenames (auto-generated) |
+
+
+# Static JSON Files
+| File                 | Purpose                                                  |
+|----------------------|-----------------------------------------------------------|
+| api/athletes.json     | Full list of athletes for filtering/search (auto-generated) |
+| api/player_stats/*.json | Detailed per-game stats per player (one JSON per player) |
+
+
+# Image and Profile Files
+| Folder/Files                      | Purpose                                          |
+|------------------------------------|--------------------------------------------------|
+| images/athletes/*.jpg              | All uploaded athlete images (main folder)        |
+| images/athletes/profiles/*.html    | Auto-generated HTML profile pages for athletes   |
+| images/banner/                    | Old (was used for rotating banners, now obsolete) |
+
+
+# Automated Local Build Process
+When you run `start-player-profile.ps1`, it:
+1. Runs `profile-generator.js` to create updated player profile pages.
+2. Creates/updates `js/athlete-images.js` (list of all athlete images).
+3. Creates/updates `api/athletes.json` (detailed data for media gallery filters).
+
+This ensures the ENTIRE site is refreshed and synchronized before uploading.
+
+
+# Hosting Model
+- No live Node.js server needed.
+- Static hosting (e.g., WHC shared hosting plan) supports this setup perfectly.
+- FTP upload structure:
+  - /index.html
+  - /athletes.html
+  - /services.html
+  - /about.html
+  - /css/styles.css
+  - /js/*.js
+  - /api/*.json
+  - /images/athletes/*.jpg
+  - /images/athletes/profiles/*.html
+
+
+# Full Current Directory Structure
+```plaintext
+/
+|-- index.html
+|-- athletes.html
+|-- services.html (assumed)
+|-- about.html (assumed)
+|-- css/
+     |-- styles.css
+|-- js/
+     |-- footer.js
+     |-- hero-rotator.js
+     |-- media-gallery.js
+     |-- slideshow.js
+     |-- athlete-images.js (auto-generated)
+|-- api/
+     |-- athletes.json (auto-generated)
+     |-- player_stats/
+         |-- marcus_carter_forward_2008.json
+|-- images/
+     |-- athletes/
+         |-- [player images].jpg
+         |-- profiles/
+             |-- [player profile pages].html
+     |-- banner/ (legacy folder, not used anymore)
+|-- footer.html
+|-- package.json (local Node.js development only)
+|-- package-lock.json (local Node.js development only)
+|-- start-player-profile.ps1 (build automation script)
+|-- profile-generator.js (build script)
+```
+
+
+# Important Notes
+- **Hero Banner:** Reads from `athlete-images.js`.
+- **Media Gallery:** Reads from `athletes.json`.
+- **Footer:** Injected dynamically by `footer.js`.
+- **Filtering, searching, and name overlays on gallery images** are all fully functional.
+
+
+# Obsolete (No Longer Needed)
+- /api/banners endpoint (deleted)
+- generate-banners-json.js script (deleted)
+- banners.json (deleted)
+
+
+# Summary
+You have created a **highly optimized**, **fully static**, **easily updatable** website structure. It combines:
+- Fast page load
+- Minimal server needs
+- Easy content management
+- Full dynamic behavior using pre-generated files
+
+---
+
+**Last Updated:** April 26, 2025
+
+/================= Current Site Flow (Before Changes)  =================================================
+(User opens site)
+        ↓
+index.html or athletes.html loaded
+        ↓
+index.html → hero-rotator.js runs
+             ↓
+             Fetches list from server API → /api/banners
+             ↓
+             Rotates hero banner images dynamically
+             
+athletes.html → media-gallery.js runs
+             ↓
+             Fetches list from server API → /api/athletes
+             ↓
+             Builds athlete cards dynamically
+             ↓
+             Enables Filter, Sort, Search dynamically
+             
+Player Profile Pages → Static HTML pages generated manually from images
+             ↓
+             (linked manually via filenames)
+             
+Server Side → Node.js Express Server
+             ↓
+             Needed to serve /api/banners and /api/athletes
+
+
+Problems With Current Flow:
+
+		Problem											Why It Matters
+	Needs a live Node.js server							Can't use simple static hosting (like WHC shared hosting)
+	
+	/api/banners and /api/athletes 						Risk of version mismatches
+	must stay up-to-date manually	
+
+	Hosting is more expensive and complex				Less control, higher cost
+
+
+/================= New Proposed Site Flow (After Changes)  =================================================
+
+(User opens site)
+        ↓
+index.html or athletes.html loaded
+        ↓
+index.html → Loads athlete-images.js (static list)
+             ↓
+             hero-rotator.js reads athlete-images.js
+             ↓
+             Rotates hero banner images dynamically
+             
+athletes.html → media-gallery.js runs
+             ↓
+             Fetches data from static /api/athletes.json
+             ↓
+             Builds athlete cards dynamically
+             ↓
+             Enables Filter, Sort, Search dynamically
+             
+Player Profile Pages → Auto-generated HTML pages via PowerShell script
+             ↓
+             (linked automatically via matching filenames)
+             
+No Server Side Needed → Static Files Only
+             ↓
+             Upload via FTP to WHC Hosting
+
+
+
+	Feature												Benefit
+	No live server needed								✅ Use simple, cheap static hosting
+	Faster page loads									✅ Everything is ready-to-serve, no API latency
+	Auto-generated profile pages						✅ No manual page building
+	Auto-generated athlete lists						✅ Always up-to-date gallery and hero banners
+	Full control over updates							✅ Add new images → Run one script → Upload → Done
+
+
+
+/================= Side-by-Side Quick Comparison:  =================================================
+
+	Area				Current Setup						New Setup
+	Hero Images			Server fetch (/api/banners)			Static JS file (athlete-images.js)
+	Athlete Gallery		Server fetch (/api/athletes)		Static JSON (athletes.json)
+	Profile Pages		Auto-generated (good)				Auto-generated (still good)
+	Hosting Needs		Node.js server (Express)			Static FTP upload (WHC ready)
+	Build Process		Semi-manual							Fully automated (PowerShell script)
+
+
+
+/================= Simple Side-by-Side Flowchart (TXT Format)  =================================================
+
+
+BEFORE (Current Setup)                         AFTER (Proposed New Setup)
+──────────────────────────────────             ─────────────────────────────────
+[User loads index.html]                         [User loads index.html]
+        ↓                                                ↓
+[hero-rotator.js] fetches → /api/banners         [athlete-images.js] (static list)
+        ↓                                                ↓
+Rotates Hero Banner dynamically                  [hero-rotator.js] reads list
+                                                  ↓
+                                                  Rotates Hero Banner dynamically
+──────────────────────────────────             ─────────────────────────────────
+[User loads athletes.html]                       [User loads athletes.html]
+        ↓                                                ↓
+[media-gallery.js] fetches → /api/athletes         [media-gallery.js] fetches → /api/athletes.json
+        ↓                                                ↓
+Builds Athlete Gallery dynamically                Builds Athlete Gallery dynamically
+(Filters / Sorts / Searches)                      (Filters / Sorts / Searches)
+──────────────────────────────────             ─────────────────────────────────
+[Profile Page Links]                             [Profile Page Links]
+(Manually linked by filename)                    (Auto-linked by filename)
+──────────────────────────────────             ─────────────────────────────────
+[Node.js Express Server required]                [No server needed — Static Hosting]
+
+
+
+Key Differences Highlighted:
+
+	Area						Before							After
+	Hero images source			/api/banners (dynamic)			athlete-images.js (static)
+	Gallery data source			/api/athletes (dynamic)			athletes.json (static)
+	Profile pages				Manual filenames				Auto-generated and linked
+	Hosting needs				Node.js Express server			Static FTP hosting
+	Build updates				Semi-manual						Fully automated via PowerShell
+
+
+
+
+/================= Complete List of Files to Update  =================================================
+
+	File							Why it needs updating									Type of update
+	index.html						Insert <script src="js/athlete-images.js"></script> 	Minor edit (1 line added)
+									before hero-rotator.js	
+									
+	athletes.html					(No direct HTML change, but media-gallery.js 			No direct edit
+									behavior changes)	
+									
+	js/hero-rotator.js				Stop fetching /api/banners, instead read 				Moderate update
+									static athlete-images.js list	
+									
+	js/media-gallery.js				Fetch /api/athletes.json instead of /api/athletes		Minor update (small fetch change)
+	
+	start-player-profile.ps1		Add steps to generate athlete-images.js 				Major update
+									and athletes.json automatically	
+									
+	server.js (optional)			If keeping locally: remove /api/banners 				Minor cleanup
+									and /api/athletes endpoints (optional cleanup)
+									
+	package.json (optional)			No change needed unless you want to clean 				Optional cleanup
+									dependencies	
+	images/banner/ folder			Marked as obsolete (archive or delete later)			Optional cleanup
+
+
+
+/================= New Files That Will Be Created (Auto-generated):  =================================================
+
+	New File						Why it's needed											Where it goes
+	js/athlete-images.js			Static list of athlete images for rotating 				/js/
+									hero banners	
+	api/athletes.json				Static list of athlete data for media-gallery 			/api/
+									(filter, search, sort)	
+
+
+/================= ew Files That Will Be Created (Auto-generated):  =================================================
+
+
+provide the full js/hero-rotator.js with the update added for ease of copy
+provide the full js/media-gallery.js with the update added for ease of copy
+provide the full start-player-profile.ps1 with the update added for ease of copy
+provide the full server.js with the update for keeping locally added for ease of copy
+provide the full package.json with the update to clean dependencies added for ease of copy
+provide the full start-player-profile.ps1 with the update added for ease of copy
+provide the new js/athlete-images.js for ease of copy
+provide the new api/athletes.json for ease of copy
+
+
+
+
+
+
+
+

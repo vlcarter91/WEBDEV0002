@@ -1,11 +1,14 @@
-console.log("✅ footer.js loaded");
+// js/hero-rotator.js
+// ✅ Rotates static design banner images every 6 seconds
+
+console.log("✅ hero-rotator.js loaded");
+
 const bannerElement = document.getElementById("hero-banner");
-const bannerFolder = "images/banner/";
-let bannerImages = [];
+const bannerFolder = "images/banner/"; // Folder where hero banners are stored
 let bannerIndex = 0;
 
 function rotateBanner() {
-  if (bannerImages.length <= 1) return;
+  if (bannerImages.length <= 1) return; // Only rotate if there's more than one image
 
   bannerIndex = (bannerIndex + 1) % bannerImages.length;
   bannerElement.classList.remove("fade-in");
@@ -22,24 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Always show the default image
+  if (typeof bannerImages === "undefined" || bannerImages.length === 0) {
+    console.error("❌ bannerImages not loaded or empty.");
+    return;
+  }
+
+  // Initialize hero banner with the first image
+  bannerElement.src = bannerFolder + bannerImages[0];
   bannerElement.classList.add("fade-in");
 
-  // Fetch the list of banners from the server
-  fetch("/api/banners")
-    .then((res) => res.json())
-    .then((data) => {
-      if (!Array.isArray(data) || data.length === 0) {
-        console.warn("⚠️ No banners found.");
-        return;
-      }
-
-      bannerImages = data;
-
-      // Rotate every 6 seconds
-      if (bannerImages.length > 1) {
-        setInterval(rotateBanner, 6000);
-      }
-    })
-    .catch((err) => console.error("❌ Failed to load banners:", err));
+  // Start rotating banners every 6 seconds
+  if (bannerImages.length > 1) {
+    setInterval(rotateBanner, 6000);
+  }
 });

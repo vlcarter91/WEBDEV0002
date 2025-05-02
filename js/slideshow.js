@@ -1,19 +1,22 @@
-console.log("✅ footer.js loaded");
-console.log("✅ Updated Slideshow JS loaded");
+// js/slideshow.js
+// ✅ Rotates athlete images every 4 seconds from /images/athletes/
 
-const imageFolder = "images/athletes/";
+console.log("✅ slideshow.js loaded");
+
+const slideshowElement = document.getElementById("slideshow");
+const athleteFolder = "images/athletes/";
 let athleteImages = [];
-let currentIndex = 0;
+let currentAthleteIndex = 0;
 
 function fetchAthleteImages(callback) {
-  fetch("/api/athletes")
+  fetch("/api/athletes.json")
     .then((res) => {
-      if (!res.ok) throw new Error("Network response was not ok");
+      if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
       return res.json();
     })
-    .then((filenames) => {
-      athleteImages = filenames;
-      console.log(`✅ Loaded ${athleteImages.length} athlete images`);
+    .then((athletes) => {
+      athleteImages = athletes.map(a => a.filename);
+      console.log(`✅ Loaded ${athleteImages.length} athlete images.`);
       callback();
     })
     .catch((err) => {
@@ -22,24 +25,24 @@ function fetchAthleteImages(callback) {
 }
 
 function startSlideshow() {
-  const imgElement = document.getElementById("slideshow");
-  if (!imgElement || athleteImages.length === 0) {
-    console.error("❌ No slideshow element or no images available.");
+  if (!slideshowElement || athleteImages.length === 0) {
+    console.error("❌ Slideshow element not found or athleteImages is empty.");
     return;
   }
 
-  imgElement.src = imageFolder + athleteImages[currentIndex];
-  imgElement.classList.add("fade-in");
+  // Set initial image
+  slideshowElement.src = athleteFolder + athleteImages[currentAthleteIndex];
+  slideshowElement.classList.add("fade-in");
 
   setInterval(() => {
-    imgElement.classList.remove("fade-in");
+    slideshowElement.classList.remove("fade-in");
 
     setTimeout(() => {
-      currentIndex = (currentIndex + 1) % athleteImages.length;
-      imgElement.src = imageFolder + athleteImages[currentIndex];
-      imgElement.classList.add("fade-in");
-    }, 200);
-  }, 4000);
+      currentAthleteIndex = (currentAthleteIndex + 1) % athleteImages.length;
+      slideshowElement.src = athleteFolder + athleteImages[currentAthleteIndex];
+      slideshowElement.classList.add("fade-in");
+    }, 300);
+  }, 4000); // Change image every 4 seconds
 }
 
 document.addEventListener("DOMContentLoaded", () => {
